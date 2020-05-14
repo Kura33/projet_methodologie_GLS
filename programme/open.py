@@ -1,5 +1,8 @@
 import csv
-with open('F1.csv', newline='') as csvfile:
-    reader = csv.DictReader(csvfile)
-    for row in reader:
-        print(row['HomeTeam'], ":", row['FTHG'], "|",row['AwayTeam'], ':', row['FTAG'])
+import glob
+import pandas as pd
+list_file = glob.glob('**/*.csv', recursive="true")
+for i in range(len(list_file)):
+    data_frame=pd.read_csv(list_file[i])
+    print(data_frame[['Date', 'HomeTeam', 'AwayTeam']])
+
